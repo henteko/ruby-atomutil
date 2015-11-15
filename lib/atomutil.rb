@@ -771,20 +771,8 @@ module Atom
       #  |[\xfc-\xfd][\x80-\xbf]{5}
       #  )*$/x
       if true
-        copy = "<div xmlns=\"http://www.w3.org/1999/xhtml\">#{value}</div>"  
-        is_valid = true
-        begin
-          node = REXML::Document.new(copy).elements[1][0]
-        rescue
-          is_valid = false
-        end
-        if is_valid && node.instance_of?(REXML::Element)
-          @elem.add_element node
-          self.type = 'xhtml'
-        else
-          @elem.add_text value
-          self.type = (value =~ /^\s*</) ? 'html' : 'text'
-        end
+        @elem.add_text value
+        self.type = (value =~ /^\s*</) ? 'html' : 'text'
       else
         @elem.add_text([value].pack('m').chomp)
       end
