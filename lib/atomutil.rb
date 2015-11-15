@@ -754,14 +754,14 @@ module Atom
 
     def body=(value)
 
-      if value =~ Regexp.new("^(?:
-        [[:print:]]
-        |[\xc0-\xdf][\x80-\xbf]
-        |[\xe0-\xef][\x80-\xbf]{2}
-        |[\xf0-\xf7][\x80-\xbf]{3}
-        |[\xf8-\xfb][\x80-\xbf]{4}
-        |[\xfc-\xfd][\x80-\xbf]{5}
-        )*$", Regexp::EXTENDED, 'n')
+      #if value =~ Regexp.new("^(?:
+      #  [[:print:]]
+      #  |[\xc0-\xdf][\x80-\xbf]
+      #  |[\xe0-\xef][\x80-\xbf]{2}
+      #  |[\xf0-\xf7][\x80-\xbf]{3}
+      #  |[\xf8-\xfb][\x80-\xbf]{4}
+      #  |[\xfc-\xfd][\x80-\xbf]{5}
+      #  )*$", Regexp::EXTENDED, 'n')
       #if value =~ /^(?:
       #   [[:print:]]
       #  |[\xc0-\xdf][\x80-\xbf]
@@ -770,6 +770,7 @@ module Atom
       #  |[\xf8-\xfb][\x80-\xbf]{4}
       #  |[\xfc-\xfd][\x80-\xbf]{5}
       #  )*$/x
+      if true
         copy = "<div xmlns=\"http://www.w3.org/1999/xhtml\">#{value}</div>"  
         is_valid = true
         begin
